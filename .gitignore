@@ -1,3 +1,4 @@
 .terraform*
 secrets.auto.tfvars
-
+*.tfstate*
+demo/demo.cast
