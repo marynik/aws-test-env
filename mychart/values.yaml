@@ -1,0 +1,8 @@
+image: nginx:latest
+appName: web-app
+hostName: my-app.example.com
+
+cron:
+  serviceAccount: cronjob-sa
+  scaleDownSchedule: "*/10 * * * *"
+  scaleUpSchedule:   "5/10 * * * *"

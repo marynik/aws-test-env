@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: scale-up-my-web-app
+spec:
+  schedule: "{{ .Values.cron.scaleUpSchedule }}"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          serviceAccountName: {{ .Values.cron.serviceAccount }}
+          containers:
+            - name: scaler
+              image: bitnami/kubectl
+              command:
+                - kubectl
+                - scale
+                - deployment
+                - {{ .Values.appName }}
+                - --replicas=4
+          restartPolicy: OnFailure
