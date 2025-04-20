@@ -10,11 +10,11 @@ This is a solution for deploying a web application in a Kubernetes cluster.
 
 ## What you get
 
-Nginx as the sample web app with:
+Nginx as a sample web app with:
 - pods distribution across zones
 - handling slow startup (5-10 sec)
 - scales based on daily load pattern
-- high CPU on startup, low during steady state
+- low CPU during steady state, with ability to get more if needed
 - balance berween resilience and resource consumption
 
 The K8s cluster with:
@@ -34,26 +34,30 @@ To see the connection between pods and service
 ```
 kubectl describe ingress
 ```
-Use the value from "Address" field instead of <EXTERNAL-IP> to get the Nginx web app welcome page:
+Use the value from "Address" field instead of EXTERNAL-IP to get the Nginx web app welcome page:
 ```
-curl -v <EXTERNAL-IP> -H "Host:my-app.example.com"
+curl -v EXTERNAL-IP -H "Host:my-app.example.com"
 ```
-
+or run 
+```
+kubectl port-forward svc/my-web-app-service 8080:80
+```
+and check the http://localhost:8080 in your browser to see the Nginx web app welcome page.
 
 ## How to Deploy
 
-### ✅ Option 1: You already have a Kubernetes cluster
+### Option 1: You already have a Kubernetes cluster
 
-#### ➤ Deploy using plain YAML
+#### Deploy using plain YAML
 ```
 kubectl apply -f allin.yaml
 ```
 or
-#### ➤ Deploy using Helm chart
+#### Deploy using Helm chart
 ```
 helm install web-app-release ./mychart
 ```
-### ✅ Option 2: No cluster? Deploy everything with Terraform (AWS EKS)
+### Option 2: No cluster? Deploy everything with Terraform (AWS EKS)
 
 Requires: AWS CLI, Terraform, kubectl, Helm.
 
@@ -72,15 +76,15 @@ Use the kubeconfig_command from the output to connect to the cluster.
 
 ## How to Uninstall
 
-#### ➤ If you used using plain YAM
+#### If you used plain YAML
 ```
-kubectl apply -f allin.yaml
+kubectl delete -f allin.yaml
 ```
-#### ➤ If you used Helm chart
+#### If you used Helm chart
 ```
 helm uninstall web-app-release
 ```
-#### ➤ If you used Terraform
+#### If you used Terraform
 ```
 terraform destroy
 ```
