@@ -22,16 +22,19 @@ The K8s cluster with:
 - Ingress/Nginx controller
 
 ## How to check
-[![asciicast](https://asciinema.org/a/LKcEvJupXwexAZgach8AateOh.svg)](https://asciinema.org/a/LKcEvJupXwexAZgach8AateOh)
-To get nodes with zones
+![til](https://github.com/marynik/aws-test-env/blob/main/demo.gif)
+Check your browser while port-forwarding 
+![til](https://github.com/marynik/aws-test-env/blob/main/demo/localhost_screenshot.png)
+
+To get nodes with zones:
 ```
 kubectl get nodes -L topology.kubernetes.io/zone
 ```
-To get the pods
+To get the pods:
 ```
 kubectl get pods
 ```
-To see the connection between pods and service
+To see the connection between pods and service:
 ```
 kubectl describe ingress
 ```
@@ -39,7 +42,7 @@ Use the value from "Address" field instead of EXTERNAL-IP to get the Nginx web a
 ```
 curl -v EXTERNAL-IP -H "Host:my-app.example.com"
 ```
-or run 
+or run:
 ```
 kubectl port-forward svc/my-web-app-service 8080:80
 ```
@@ -67,7 +70,7 @@ Add the secrets.auto.tfvars file with secrets for connecting AWS:
 access_key = "your_access_key"
 secret_key = "your_secret_key"
 ```
-Run
+Run:
 ```
 terarform init
 terraform apply
