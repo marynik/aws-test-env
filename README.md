@@ -22,7 +22,7 @@ The K8s cluster with:
 - Ingress/Nginx controller
 
 ## How to check
-![til](https://github.com/marynik/aws-test-env/blob/main/demo.gif)
+![til](https://github.com/marynik/aws-test-env/blob/main/demo/demo.gif)
 Check your browser while port-forwarding 
 ![til](https://github.com/marynik/aws-test-env/blob/main/demo/localhost_screenshot.png)
 
