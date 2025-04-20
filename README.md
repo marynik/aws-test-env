@@ -22,6 +22,7 @@ The K8s cluster with:
 - Ingress/Nginx controller
 
 ## How to check
+[![asciicast](https://asciinema.org/a/LKcEvJupXwexAZgach8AateOh.svg)](https://asciinema.org/a/LKcEvJupXwexAZgach8AateOh)
 To get nodes with zones
 ```
 kubectl get nodes -L topology.kubernetes.io/zone
