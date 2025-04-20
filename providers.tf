@@ -1,10 +1,11 @@
 terraform {
-  cloud {
-    organization = "MaryNikOrg"
-    workspaces {
-      name = "aws-test-cluster"
-    }
-  }
+  # Для хранения state в Terraform Cloud
+  # cloud {
+  #   organization = "MaryNikOrg"
+  #   workspaces {
+  #     name = "aws-test-cluster"
+  #   }
+  # }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
