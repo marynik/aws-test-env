@@ -4,5 +4,5 @@ hostName: my-app.example.com
 
 cron:
   serviceAccount: cronjob-sa
-  scaleDownSchedule: "*/10 * * * *"
-  scaleUpSchedule:   "5/10 * * * *"
+  scaleDownSchedule: "0 23 * * *"
+  scaleUpSchedule:   "0 7 * * *"
