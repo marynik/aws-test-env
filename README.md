@@ -23,8 +23,10 @@ The K8s cluster with:
 
 ## How to check
 ![til](https://github.com/marynik/aws-test-env/blob/main/demo/demo.gif)
-Check your browser while port-forwarding 
+Check your browser while port-forwarding:
 ![til](https://github.com/marynik/aws-test-env/blob/main/demo/localhost_screenshot.png)
+Check scaling:
+![til](https://github.com/marynik/aws-test-env/blob/main/demo/demo2.gif)
 
 To get nodes with zones:
 ```
@@ -47,6 +49,17 @@ or run:
 kubectl port-forward svc/my-web-app-service 8080:80
 ```
 and check the http://localhost:8080 in your browser to see the Nginx web app welcome page.
+
+To check scaling up:
+```
+kubectl create job --from=cronjob/scale-up-my-web-app manual-scale-up
+kubectl get pods -o wide -w
+```
+To check scaling down:
+```
+kubectl create job --from=cronjob/scale-down-my-web-app manual-scale-down
+kubectl get pods -o wide -w
+```
 
 ## How to Deploy
 
